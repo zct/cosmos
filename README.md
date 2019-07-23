@@ -1,1 +1,3 @@
 # cosmos
+
+slice, string tricks
