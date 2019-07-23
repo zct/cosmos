@@ -1,12 +1,14 @@
 package cosmos
 
+import "math/rand"
+
 //Delete with origin Order
 func DeleteIndex(a interface{}, index int) interface{} {
 	switch a.(type) {
 	case []int:
 		return DeleteIndexInt(a.([]int), index)
 	default:
-		return a
+		panic("not support type")
 	}
 }
 
@@ -17,6 +19,23 @@ func DeleteIndexWithoutOrder(a interface{}, index int) interface{} {
 		return DeleteIndexWithoutOrderInt(a.([]int), index)
 	default:
 		return a
+	}
+}
+
+// Shuffle slice
+func Shuffle(a interface{}) {
+	switch a.(type) {
+	case []int:
+		ShuffleInt(a.([]int))
+	default:
+		panic("not support type")
+	}
+}
+
+func ShuffleInt(a []int) {
+	for i := len(a) - 1; i > 0; i-- {
+		j := rand.Intn(i + 1)
+		a[i], a[j] = a[j], a[i]
 	}
 }
 

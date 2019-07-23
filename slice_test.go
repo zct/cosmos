@@ -18,3 +18,11 @@ func TestDelete(t *testing.T) {
 		t.Errorf("TestDeleteIndexWithouOrder failed, %v", a)
 	}
 }
+
+func TestShuffle(t *testing.T) {
+	a := []int{1, 2, 3, 4}
+	Shuffle(a)
+	if reflect.DeepEqual(a, []int{1, 2, 3, 4}) {
+		t.Errorf("TestShuffle failed %v", a)
+	}
+}
