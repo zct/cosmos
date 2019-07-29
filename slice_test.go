@@ -26,3 +26,16 @@ func TestShuffle(t *testing.T) {
 		t.Errorf("TestShuffle failed %v", a)
 	}
 }
+
+func TestAppend(t *testing.T) {
+	a := []int{1, 2, 3, 4}
+	b := a[:2]
+	b = append(b[:1], a[2])
+}
+
+func TestReverse(t *testing.T) {
+	a := []int{1, 2, 3, 4}
+	if !reflect.DeepEqual(ReverseInt(a), []int{4, 3, 2, 1}) {
+		t.Errorf("TestReverse failed %v", a)
+	}
+}

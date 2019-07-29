@@ -18,7 +18,17 @@ func DeleteIndexWithoutOrder(a interface{}, index int) interface{} {
 	case []int:
 		return DeleteIndexWithoutOrderInt(a.([]int), index)
 	default:
-		return a
+		panic("not support type")
+	}
+}
+
+//Reverse
+func Reverse(a interface{}) interface{} {
+	switch a.(type) {
+	case []int:
+		return ReverseInt(a.([]int))
+	default:
+		panic("not support type")
 	}
 }
 
@@ -58,5 +68,12 @@ func DeleteIndexInt32(a []int32, index int) []int32 {
 func DeleteIndexWithoutOrderInt32(a []int32, index int) []int32 {
 	a[index] = a[len(a)-1]
 	a = a[:len(a)-1]
+	return a
+}
+
+func ReverseInt(a []int) []int {
+	for left, right := 0, len(a)-1; left < right; left, right = left+1, right-1 {
+		a[left], a[right] = a[right], a[left]
+	}
 	return a
 }
