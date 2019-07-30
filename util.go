@@ -9,3 +9,13 @@ func MinInt(a int, b ...int) int {
 	}
 	return min
 }
+
+func MaxInt(a int, b ...int) int {
+	max := a
+	for _, v := range b {
+		if v > max {
+			max = v
+		}
+	}
+	return max
+}

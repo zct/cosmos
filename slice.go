@@ -42,6 +42,16 @@ func Shuffle(a interface{}) {
 	}
 }
 
+// Del First value of slice
+func SliceDelFirstVal(a interface{}, val interface{}) interface{} {
+	switch a.(type) {
+	case []int:
+		return SliceDelFirstValInt(a.([]int), val.(int))
+	default:
+		panic("not support type")
+	}
+}
+
 func ShuffleInt(a []int) {
 	for i := len(a) - 1; i > 0; i-- {
 		j := rand.Intn(i + 1)
@@ -74,6 +84,16 @@ func DeleteIndexWithoutOrderInt32(a []int32, index int) []int32 {
 func ReverseInt(a []int) []int {
 	for left, right := 0, len(a)-1; left < right; left, right = left+1, right-1 {
 		a[left], a[right] = a[right], a[left]
+	}
+	return a
+}
+
+func SliceDelFirstValInt(a []int, val int) []int {
+	for i, v := range a {
+		if v == val {
+			a = append(a[:i], a[i+1:]...)
+			break
+		}
 	}
 	return a
 }
